@@ -1,0 +1,6 @@
+args = commandArgs(trailingOnly=TRUE)
+print(args)
+options(scipen=10)
+d<-read.table(args[1], skip=1)
+write(args[2], file = "andi/andi_distances_formated.phy")
+write.table(d, file = "andi/andi_distances_formated.phy", col.names = FALSE, row.names = FALSE, quote = FALSE, append = TRUE)
