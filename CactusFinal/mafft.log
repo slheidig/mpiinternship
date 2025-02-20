@@ -1,0 +1,22 @@
+OS = linux
+The number of physical cores =  12
+nthread = 12
+nthreadpair = 12
+nthreadtb = 12
+ppenalty_ex = 0
+stacksize: 8192 kb
+generating a scoring matrix for nucleotide (dist=200) ... done
+Gap Penalty = -1.53, +0.00, +0.00
+
+
+
+Making a distance matrix ..
+    1 / 47 (thread    0)
+done.
+
+Constructing a UPGMA tree (efffree=0) ... 
+    0 / 47   10 / 47   20 / 47   30 / 47   40 / 47
+done.
+
+Progressive alignment 1/2... 
+STEP     1 / 46 (thread    0) fSTEP     2 / 46 (thread    1) fSTEP     7 / 46 (thread    6) fSTEP     8 / 46 (thread    7) fSTEP     9 / 46 (thread    8) fSTEP    10 / 46 (thread    9) fSTEP    12 / 46 (thread   10) fSTEP    11 / 46 (thread   11) fSTEP    16 / 46 (thread    7) fSTEP     3 / 46 (thread    2) fSTEP    20 / 46 (thread    7) fSTEP    21 / 46 (thread   11) fSTEP    13 / 46 (thread    0) fSTEP    22 / 46 (thread    2) fSTEP     4 / 46 (thread    3) fSTEP    23 / 46 (thread    7) fSTEP    24 / 46 (thread   11) fSTEP    14 / 46 (thread    6) fSTEP    26 / 46 (thread    2) fSTEP    27 / 46 (thread    3) fSTEP     5 / 46 (thread    4) fSTEP    28 / 46 (thread    6)STEP    15 / 46 (thread    9) f fSTEP    25 / 46 (thread    0) fSTEP    30 / 46 (thread   11) fSTEP    32 / 46 (thread    4) fSTEP     6 / 46 (thread    5) fSTEP    34 / 46 (thread   11) fSTEP    17 / 46 (thread   10) fSTEP    31 / 46 (thread    3) fSTEP    19 / 46 (thread    8) fSTEP    18 / 46 (thread    1) fSTEP    33 / 46 (thread    2) fSTEP    29 / 46 (thread    7) fSTEP    36 / 46 (thread    6) fSTEP    35 / 46 (thread    9) fSTEP    40 / 46 (thread   10) fSTEP    37 / 46 (thread    0) fSTEP    42 / 46 (thread    8) fSTEP    38 / 46 (thread   11) fSTEP    39 / 46 (thread    5) fSTEP    41 / 46 (thread    4) fSTEP    43 / 46 (thread    3) fSTEP    44 / 46 (thread    1) fSTEP    45 / 46 (thread    7) f

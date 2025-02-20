@@ -1,0 +1,7 @@
+
+EnvironmentNotWritableError: The current user does not have write permissions to the target environment.
+  environment location: /data/modules/python/python-miniconda3-2024-03/envs/cactus-v2.9.0
+  uid: 856616
+  gid: 20000
+
+

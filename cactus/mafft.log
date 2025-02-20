@@ -1,0 +1,79 @@
+OS = linux
+The number of physical cores =  32
+nthread = 32
+nthreadpair = 32
+nthreadtb = 16
+ppenalty_ex = 0
+stacksize: 8192 kb
+generating a scoring matrix for nucleotide (dist=200) ... done
+Gap Penalty = -1.53, +0.00, +0.00
+
+
+
+Making a distance matrix ..
+    1 / 20 (thread    0)
+done.
+
+Constructing a UPGMA tree (efffree=0) ... 
+    0 / 20   10 / 20
+done.
+
+Progressive alignment 1/2... 
+STEP     1 / 19 (thread    0) fSTEP     2 / 19 (thread    1) fSTEP     3 / 19 (thread    2) fSTEP     6 / 19 (thread    4) fSTEP     9 / 19 (thread    9) fSTEP    10 / 19 (thread   10) fSTEP     4 / 19 (thread    3) fSTEP    13 / 19 (thread   12) fSTEP     5 / 19 (thread    5) fSTEP     8 / 19 (thread    7) fSTEP     7 / 19 (thread    6) fSTEP    11 / 19 (thread    8) fSTEP    12 / 19 (thread   11) fSTEP    14 / 19 (thread   13) fSTEP    15 / 19 (thread   14) fSTEP    16 / 19 (thread   15) fSTEP    17 / 19 (thread    4) fSTEP    18 / 19 (thread    2) fSTEP    19 / 19 (thread    1) f
+done.
+
+Making a distance matrix from msa.. 
+    0 / 20 (thread    0)
+done.
+
+Constructing a UPGMA tree (efffree=1) ... 
+    0 / 20   10 / 20
+done.
+
+Progressive alignment 2/2... 
+STEP     1 / 19 (thread    0) fSTEP     3 / 19 (thread    2) fSTEP     2 / 19 (thread    1) fSTEP     6 / 19 (thread    5) fSTEP     7 / 19 (thread    6) fSTEP    11 / 19 (thread   10) fSTEP    13 / 19 (thread   12) fSTEP     4 / 19 (thread    3) fSTEP     9 / 19 (thread    8) fSTEP    12 / 19 (thread   11) fSTEP     5 / 19 (thread    4) fSTEP    15 / 19 (thread   14) fSTEP     8 / 19 (thread    7) fSTEP    10 / 19 (thread    9) fSTEP    14 / 19 (thread   13) fSTEP    16 / 19 (thread   15) fSTEP    17 / 19 (thread    2) fSTEP    18 / 19 (thread    1) fSTEP    19 / 19 (thread    0) f
+done.
+
+disttbfast (nuc) Version 7.505
+alg=A, model=DNA200 (2), 1.53 (4.59), -0.00 (-0.00), noshift, amax=0.0
+16 thread(s)
+
+generating a scoring matrix for nucleotide (dist=200) ... done
+    0 / 20 (thread    0)dndpre (nuc) Version 7.505
+alg=X, model=DNA200 (2), 1.53 (4.59), 0.37 (1.11), noshift, amax=0.0
+32 thread(s)
+
+minimumweight = 0.000010
+autosubalignment = 0.000000
+nthread = 8
+randomseed = 0
+blosum 62 / kimura 200
+poffset = 0
+niter = 2
+sueff_global = 0.100000
+nadd = 2
+generating a scoring matrix for nucleotide (dist=200) ... done
+
+    0 / 20   10 / 20
+Segment   1/  1    1- 370
+001-0000-1 (thread    3) identical     001-0000-0 (thread    6) identical     001-0000-0 (thread    1) identical     001-0003-1 (thread    8) identical     001-0003-1 (thread    5) identical     001-0005-0 (thread    7) identical     001-0006-0 (thread    3) identical     001-0007-0 (thread    1) identical     001-0008-1 (thread    6) identical     001-0008-1 (thread    8) identical     001-0010-0 (thread    5) identical     001-0011-1 (thread    7) identical     001-0012-0 (thread    4) identical     001-0012-1 (thread    2) identical     001-0014-0 (thread    3) identical     001-0015-1 (thread    1) identical     001-0016-1 (thread    7) identical     001-0016-0 (thread    5) identical     001-0018-0 (thread    3) identical     001-0019-1 (thread    1) identical     001-0020-0 (thread    7) identical     001-0021-1 (thread    5) identical     001-0022-0 (thread    3) identical     001-0023-1 (thread    1) identical     001-0024-0 (thread    7) identical     001-0025-1 (thread    5) identical     001-0026-1 (thread    1) identical     001-0027-1 (thread    5) identical     001-0028-1 (thread    5) identical     001-0028-1 (thread    5) better     001-0029-0 (thread    4) identical     001-0030-1 (thread    2) identical     001-0031-1 (thread    5) identical     001-0031-1 (thread    5) better     001-0032-0 (thread    3) identical     001-0033-0 (thread    1) identical     001-0034-0 (thread    7) identical     001-0035-1 (thread    8) identical     001-0036-0 (thread    6) identical     002-0000-0 (thread    8) identical     002-0001-1 (thread    3) identical     002-0001-1 (thread    6) identical     002-0002-1 (thread    1) identical     002-0004-0 (thread    5) identical     002-0005-0 (thread    7) identical     002-0006-0 (thread    8) identical     002-0006-1 (thread    3) identical     002-0008-0 (thread    6) identical     002-0008-1 (thread    1) identical     002-0010-1 (thread    7) identical     002-0010-0 (thread    5) identical     002-0012-1 (thread    3) identical     002-0013-0 (thread    8) identical     002-0014-0 (thread    7) identical     002-0015-1 (thread    5) identical     002-0016-0 (thread    3) identical     002-0017-1 (thread    8) identical     002-0018-0 (thread    4) identical     002-0019-1 (thread    2) identical     002-0020-0 (thread    7) identical     002-0021-1 (thread    5) identical     002-0022-0 (thread    3) identical     002-0023-1 (thread    8) identical     002-0024-0 (thread    4) identical     002-0025-1 (thread    2) identical     002-0026-0 (thread    7) identical     002-0027-1 (thread    5) identical     002-0028-1 (thread    8) identical     002-0029-1 (thread    2) identical     002-0030-0 (thread    3) identical     002-0031-1 (thread    5) identical     002-0031-1 (thread    5) worse      002-0032-1 (thread    8) identical     002-0033-0 (thread    7) identical     002-0034-0 (thread    4) identical     002-0035-1 (thread    1) identical     002-0036-0 (thread    6) identical     
+Converged.
+
+Reached 2
+done
+dvtditr (nuc) Version 7.505
+alg=A, model=DNA200 (2), 1.53 (4.59), -0.00 (-0.00), noshift, amax=0.0
+8 thread(s)
+
+
+Strategy:
+ FFT-NS-i (Standard)
+ Iterative refinement method (max. 2 iterations)
+
+If unsure which option to use, try 'mafft --auto input > output'.
+For more information, see 'mafft --help', 'mafft --man' and the mafft page.
+
+The default gap scoring scheme has been changed in version 7.110 (2013 Oct).
+It tends to insert more gaps into gap-rich regions than previous versions.
+To disable this change, add the --leavegappyregion option.
+
