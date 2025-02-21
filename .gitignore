@@ -1,2 +1,4 @@
 #dont track genomes
 *.fa
+*.hal
+*.log
