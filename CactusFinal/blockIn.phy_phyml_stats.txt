@@ -1,0 +1,56 @@
+
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                  ---  PhyML 3.3.20241207  ---                                             
+                            https://github.com/stephaneguindon/phyml/                      
+                             Copyright CNRS - Universite Montpellier                                 
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+. Sequence filename: 			blockIn.phy
+. Data set: 				#1
+. Initial tree: 			BioNJ
+. Model of nucleotides substitution: 	HKY85
+. Integrated length (IL) model: 	no
+. Number of taxa: 			45
+. Log-likelihood: 			-6881.80645
+. Unconstrained log-likelihood: 	-2604.97876
+. Composite log-likelihood: 		-32307.58633
+. Parsimony: 				1495
+. Tree size: 				16.37862
+. Discrete gamma model: 		Yes
+  - Number of classes: 			4
+  - Gamma shape parameter: 		0.352
+  - Relative rate in class 1: 		0.01045 [freq=0.250000] 		
+  - Relative rate in class 2: 		0.14519 [freq=0.250000] 		
+  - Relative rate in class 3: 		0.67378 [freq=0.250000] 		
+  - Relative rate in class 4: 		3.17057 [freq=0.250000] 		
+. Transition/transversion ratio: 	3.831230
+. Nucleotides frequencies:
+  - f(A)=  0.22010
+  - f(C)=  0.28632
+  - f(G)=  0.32572
+  - f(T)=  0.16786. aLRT statistics to test branches
+
+. Run ID:				none
+. Random seed:				1740076116
+. Subtree patterns aliasing:		no
+. Version:				3.3.20241207
+. Time used:				0h0m21s (21 seconds)
+
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+ Suggested citations:
+ S. Guindon, JF. Dufayard, V. Lefort, M. Anisimova, W. Hordijk, O. Gascuel
+ "New algorithms and methods to estimate maximum-likelihood phylogenies: assessing the performance of PhyML 3.0."
+ Systematic Biology. 2010. 59(3):307-321.
+
+ S. Guindon & O. Gascuel
+ "A simple, fast, and accurate algorithm to estimate large phylogenies by maximum likelihood"
+ Systematic Biology. 2003. 52(5):696-704.
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+
+ Please consider making a donation to support PhyML development by clicking on the following link:
+
+          https://fondation-cnrs.org/faire-un-don/
+
+              ~ Thank you ! ~
+
