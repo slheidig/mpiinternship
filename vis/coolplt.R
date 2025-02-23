@@ -6,6 +6,8 @@ library(ggplot2)
 library(tidyr)
 library(ggnewscale)
 library(RColorBrewer)
+library(viridis)
+
 # ------------------------------
 # Function: map_input
 # ------------------------------
@@ -49,26 +51,7 @@ prepare_heatmap_data <- function(tree, categories) {
     mutate(name = factor(strain_name, levels = tree$tip.label)) %>%
     arrange(name)
 
-
-  # Bin continuous variables
-  categories <- categories %>%
-    mutate(
-      lat_bin = cut(Isolation_latitude_N, breaks = seq(-180, 180, by = 30), include.lowest = TRUE),
-      lon_bin = cut(Isolation_longitude_E, breaks = seq(-180, 180, by = 30), include.lowest = TRUE),
-      temp_bin = cut(isolation_temperature, breaks = seq(5, 30, by = 5), include.lowest = TRUE)
-    )
-
-  # Prepare long format data for heatmap
-  heatmap_data <- categories %>%
-    select(strain_name, clade_species, isolation_ocean, lat_bin, lon_bin, temp_bin) %>%
-    pivot_longer(-strain_name, names_to = "property", values_to = "value") %>%
-    filter(!is.na(value))
-
-  if (nrow(heatmap_data) == 0) {
-    stop("No valid data found for heatmap plotting. Check the CSV input.")
-  }
-
-  heatmap_data
+  categories
 }
 
 # ------------------------------
@@ -76,41 +59,61 @@ prepare_heatmap_data <- function(tree, categories) {
 # ------------------------------
 create_plot <- function(tree, heatmap_data, output_csv = "heatmap_wide.csv") {
   # Plot the phylogenetic tree
-  p <- ggtree(tree) + geom_tiplab(size = 3)
+  t <- ggtree(tree) + 
+    geom_text(aes(label=label), hjust=-.2,size = 2) 
 
-  # Reshape heatmap data to wide format
-  heatmap_wide <- heatmap_data %>% pivot_wider(names_from = property, values_from = value)
 
-  # Write the heatmap_wide data frame to a CSV file
-  write.csv(heatmap_wide, file = output_csv, row.names = FALSE)
+  # Prepare the data for heatmaps
+  # Map categorical variables to color
+  df_clade <- data.frame(clade = factor(heatmap_data$clade_species))
+  df_ocean <- data.frame(ocean = factor(heatmap_data$isolation_ocean))
+  df_temp <- data.frame(temp = heatmap_data$isolation_temperature)
+
+  # Combine latitude and longitude into a new column for plotting
+  df_lat_lon <- data.frame(lat_lon = paste(heatmap_data$Isolation_latitude_N, heatmap_data$Isolation_longitude_E, sep="-"))
+
+  # Assign rownames to match the tree tip labels
+  rownames(df_clade) <- tree$tip.label
+  rownames(df_ocean) <- tree$tip.label
+  rownames(df_temp) <- tree$tip.label
+  rownames(df_lat_lon) <- tree$tip.label
+
+  # Plot clade heatmap
+  p1 <- gheatmap(t, df_clade, offset=.2, width=.2,colnames_offset_y = -.5) +
+      scale_fill_viridis_d(option="H", name="Clade")
+
+  # Add new scale for ocean heatmap
+  p2 <- p1 + new_scale_fill()
+  p2 <- gheatmap(p2, df_ocean, offset=.6, width=.2, colnames_offset_y = -.5) +
+      scale_fill_viridis_d(option="D", name="Ocean")
+  # Add new scale for temperature heatmap
+  p3 <- p2 + new_scale_fill()
+
+  p3 <- gheatmap(p3, df_temp, offset=1, width=.2, colnames_offset_y = -.5) +
+      scale_fill_viridis(option="C", name="Temperature")
   
-  # Identify heatmap columns
-  heatmap_columns <- setdiff(colnames(heatmap_wide), "strain_name")
-  if (length(heatmap_columns) == 0) {
-    stop("No columns available for heatmap plotting.")
-  }
+  # Add new scale for latitude-longitude heatmap
+  #p4 <- p3 + new_scale_fill()
 
-  # Ensure columns are factors for discrete properties
-  discrete_properties <- c("clade_species", "isolation_ocean")
-  continuous_properties <- setdiff(heatmap_columns, discrete_properties)
+  #p4 <- gheatmap(p4, df_lat_lon, offset=2, width=.2,colnames_offset_y = -.5 ,colnames_angle=45) +
+  #    scale_fill_viridis_d(option="B", name="Lat-Lon")
 
-  heatmap_wide[discrete_properties] <- lapply(heatmap_wide[discrete_properties], factor)
-  heatmap_wide[continuous_properties] <- lapply(heatmap_wide[continuous_properties], as.character)  # Keep them as factors for binning
+  p3 <- p3 + theme(
+      legend.position = "bottom",        # Place legends at the bottom
+      legend.box = "vertical",         # Set legends side by side (horizontal)
+      legend.box.spacing = unit(0.2, "cm") , # Add some space between legends
+      legend.key.size = unit(0.5, "cm"),
+      legend.spacing.y= unit(0.05, "cm"),
+    ) #+ 
+  #guides(fill = guide_legend( nrow = 3))#+
+    #guides(fill = guide_colorbar(barwidth = 5, barheight = 0.5, title.position = "top"))
 
-  # Plot first heatmap (discrete properties)
-  p <- gheatmap(p, heatmap_wide[, discrete_properties, drop = FALSE], offset = 0.05, width = 0.6,
-                colnames_position = "top", font.size = 3, hjust = 0) +
-    scale_fill_manual(values = RColorBrewer::brewer.pal(8, "Set2"), na.value = "grey90") +
-    theme(legend.position = "bottom") +
-    ggnewscale::new_scale_fill()
+  # Final plot with horizontal legends
+  #p4 <- p4 + theme(legend.position = "bottom") #+
+     # guides(fill = guide_colorbar(barwidth = 5, barheight = 0.5, title.position = "top"))
 
-  # Add second heatmap (continuous properties) with a different scale
-  p <- gheatmap(p, heatmap_wide[, continuous_properties, drop = FALSE], offset = 0.05, width = 0.6,
-                colnames_position = "top", font.size = 3, hjust = 0) +
-    scale_fill_gradient(low = "blue", high = "red", na.value = "grey90") +
-    theme(legend.position = "bottom")
-
-  p
+  # Display final plot
+  p3
 }
 
 
@@ -118,10 +121,14 @@ create_plot <- function(tree, heatmap_data, output_csv = "heatmap_wide.csv") {
 # ------------------------------
 # Example usage
 # ------------------------------
-tree_file <- "synechococcus_mappedWH8101.astral4.mad.dnd"
+#tree_file <- "synechococcus_mappedWH8101.astral4.mad.dnd"
+tree_file <- "synechococcus_mappedWH8101.bppconsense.nw"
 csv_file <- "synechococcus_temp_cats.csv"
 
 input <- map_input(tree_file, csv_file)
 heatmap_data <- prepare_heatmap_data(input$tree, input$categories)
 plot <- create_plot(input$tree, heatmap_data)
 print(plot)
+
+
+

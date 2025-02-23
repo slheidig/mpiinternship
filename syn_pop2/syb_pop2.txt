@@ -1,0 +1,12 @@
+((((((((Syn_M16_rela:0.009159,Syn_TAK9802_rela:0.012136)23:0.002383,Syn_RS9907_rela:0.012564)18:0.002312,Syn_RS9902_rela:0.009133)17:0.011769,Syn_A15_44_rela:0.007233)25:0.005532,Syn_WH8109_3_rela:0.026283)35:0.017732,(Syn_A15_62_rela:0.004054,Syn_CC9605_rela:0.006864)66:0.027976)46:0.02573,Syn_KORDI_52_rela:0.04494)39:0.021235,Syn_PROS_U_1_rela:0.03582)Root;
+
+Syn_A15_44_rela ../genomes/Syn_A15_44_rela.fa
+Syn_A15_62_rela ../genomes/Syn_A15_62_rela.fa
+Syn_CC9605_rela ../genomes/Syn_CC9605_rela.fa
+Syn_KORDI_52_rela ../genomes/Syn_KORDI_52_rela.fa
+Syn_M16_rela ../genomes/Syn_M16_rela.fa
+Syn_PROS_U_1_rela ../genomes/Syn_PROS_U_1_rela.fa
+Syn_RS9902_rela ../genomes/Syn_RS9902_rela.fa
+Syn_RS9907_rela ../genomes/Syn_RS9907_rela.fa
+Syn_TAK9802_rela ../genomes/Syn_TAK9802_rela.fa
+Syn_WH8109_3_rela ../genomes/Syn_WH8109_3_rela.fa
