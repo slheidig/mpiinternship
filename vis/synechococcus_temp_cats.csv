@@ -92,7 +92,7 @@ WH5701,Syn_WH5701,5.2,,B,North Atlantic,41.05,-72.75,6.03,13.31,Cold,pittera2014
 WH7803,Syn_WH7803,5.1,V,,North Atlantic,33.45,-67.30,25.85,5.88,Hot,pittera2014,warm,warm,V
 WH7805,Syn_WH7805,5.1,VI,a,North Atlantic,33.44,-67.30,25.85,5.88,Hot,pittera2014,warm,warm,VI
 WH8016,Syn_WH8016,5.1,I,B,North Atlantic,41.53,-70.67,17.83,12.06,Cool,pittera2014,cool,cold,I
-WH8020,,5.1,,,North Atlantic,38.41,-69.19,16.89,8.37,Cool,pittera2014,cool,cold,
+WH8020,,5.1,,,North Atlantic,38.41,-69.19,16.89,8.37,Cool,pittera2014,cool,cold,I
 WH8101,Syn_WH8101,5.1,VIII,,North Atlantic,41.53,-70.67,5.77,11.90,Cold,pittera2014,cool,cold,VIII
 WH8102,Syn_WH8102,5.1,III,A,North Atlantic,22.29,-65.36,25.78,2.55,Hot,pittera2014,warm,warm,III
 WH8103,Syn_WH8103,5.1,III,A,North Atlantic,28.30,-67.23,25.45,2.90,Hot,pittera2014,warm,warm,III

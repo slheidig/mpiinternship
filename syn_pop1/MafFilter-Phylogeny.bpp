@@ -1,0 +1,43 @@
+# maffilter param=MafFilter-Phylogeny.bpp
+
+DATA=syn_pop1_mappedBOUM118
+
+SPECIES=(Syn_A18_40_rela,Syn_A18_46_rela,Syn_BOUM118_rela,Syn_RS9915_rela,Syn_WH8102_rela,Syn_WH8103_rela)
+
+MINSIZE=500
+MAXWSIZE=5000
+
+input.file=FilteredAlignments/$(DATA).clean.maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=$(DATA).maffilter-phylogeny.log
+maf.filter=                                        \
+  Subset(                                          \
+    species=$(SPECIES),                            \
+    strict=yes, keep=no,                           \
+    remove_duplicates=yes),                        \
+  XFullGap(species=$(SPECIES), verbose=no),        \
+  Merge(                                           \
+    species=$(SPECIES),                            \
+    dist_max=100,                                  \
+    rename_chimeric_chromosomes=yes),              \
+  MinBlockLength(min_length=$(MINSIZE)),           \
+  WindowSplit(                                     \
+    preferred_size=$(MAXWSIZE),                    \
+    align=adjust,                                  \
+    keep_small_blocks=yes),                        \
+  ExternalTreeBuilding(                            \
+    input.file=blockIn.phy ,                       \
+    input.format=Phylip(                           \
+      order=sequential, type=extended),            \
+    output.file=blockIn.phy_phyml_tree.txt,        \
+    output.format=Newick,                          \
+    property_name=PhyML,                           \
+    call=./../bin/runPhyml.sh),                           \
+  OutputTrees(                                     \
+    tree=PhyML,                                    \
+    file=$(DATA).phyml_trees.dnd,                  \
+    compression=none,                              \
+    strip_names=yes)                               \
+
+

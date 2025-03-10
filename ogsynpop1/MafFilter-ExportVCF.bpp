@@ -1,0 +1,17 @@
+# ~/.local/bin/maffilter param=MafFilter-ExportVCF.bpp
+
+DATA=syn_pop1_og_mappedBOUM118
+
+SPECIES=(Syn_BL107_rela,Syn_A18_40_rela,Syn_A18_46_rela,Syn_BOUM118_rela,Syn_RS9915_rela,Syn_WH8102_rela,Syn_WH8103_rela)
+
+input.file=FilteredAlignments/$(DATA).clean.maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=$(DATA).maffilter-exportVCF.log
+maf.filter=\
+  VcfOutput(                            \
+    file=$(DATA).snp.vcf.gz,            \
+    compression=gzip,                   \
+    reference=Syn_BOUM118_rela,       \
+    genotypes=$(SPECIES),               \
+    all=yes)                             

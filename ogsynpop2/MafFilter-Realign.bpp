@@ -1,0 +1,59 @@
+# ~/.local/bin/maffilter param=MafFilter-Realign.bpp
+
+DATA=syn_pop2_og_mappedCC9605
+
+SPECIES=(Syn_BL107_rela,Syn_A15_44_rela,Syn_A15_62_rela,Syn_CC9605_rela,Syn_KORDI_52_rela,Syn_M16_rela,Syn_PROS_U_1_rela,Syn_RS9902_rela,Syn_RS9907_rela,Syn_TAK9802_rela,Syn_WH8109_3_rela)
+
+input.file=$(DATA).maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=$(DATA).maffilter-realign.log
+maf.filter=                                          \
+  SequenceStatistics(                                \
+    statistics=(                                     \
+      BlockSize,                                     \
+      BlockLength,                                   \
+      AlnScore),                                     \
+    ref_species=Syn_CC9605_rela, sep=comma,            \
+    file=FilteredAlignments/$(DATA).statistics.csv), \
+  Subset(                                            \
+    species=$(SPECIES),                              \
+    strict=no, keep=no,                              \
+    remove_duplicates=yes),                          \
+  XFullGap(species=$(SPECIES), verbose=no),          \
+  SequenceStatistics(                                \
+    statistics=(                                     \
+      BlockLength(),                                 \
+      BlockSize()),                                  \
+    ref_species=Syn_CC9605_rela, sep=comma,            \
+    file=FilteredAlignments/$(DATA).subset-statistics.csv, \
+    compression=none),                               \
+  WindowSplit(                                       \
+    preferred_size=10000,                            \
+    align=adjust,                                    \
+    keep_small_blocks=yes),                          \
+  SystemCall(                                        \
+    name=MAFFT,                                      \
+    input.file=blockIn.fasta,                        \
+    input.format=Fasta,                              \
+    output.file=blockOut.fasta,                      \
+    output.format=Fasta,                             \
+    hot=no,                                          \
+    call=./../bin/runMafft.sh),                             \
+  Merge(                                             \
+    species=$(SPECIES),                              \
+    dist_max=0,                                      \
+    rename_chimeric_chromosomes=yes),                \
+  SequenceStatistics(                                \
+    statistics=(                                     \
+      BlockSize,                                     \
+      BlockLength,                                   \
+      AlnScore),                                     \
+    ref_species=Syn_CC9605_rela, sep=comma,            \
+    file=FilteredAlignments/$(DATA).realigned-statistics.csv), \
+  Output(                                            \
+    file=FilteredAlignments/$(DATA).realigned.maf.gz,\
+    compression=gzip,                                \
+    verbose=1)                                       \
+
+

@@ -1,0 +1,43 @@
+# maffilter param=MafFilter-Phylogeny.bpp
+
+DATA=syn_pop2_mappedCC9605
+
+SPECIES=(Syn_A15_44_rela,Syn_A15_62_rela,Syn_CC9605_rela,Syn_KORDI_52_rela,Syn_M16_rela,Syn_PROS_U_1_rela,Syn_RS9902_rela,Syn_RS9907_rela,Syn_TAK9802_rela,Syn_WH8109_3_rela)
+
+MINSIZE=500
+MAXWSIZE=5000
+
+input.file=FilteredAlignments/$(DATA).clean.maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=$(DATA).maffilter-phylogeny.log
+maf.filter=                                        \
+  Subset(                                          \
+    species=$(SPECIES),                            \
+    strict=yes, keep=no,                           \
+    remove_duplicates=yes),                        \
+  XFullGap(species=$(SPECIES), verbose=no),        \
+  Merge(                                           \
+    species=$(SPECIES),                            \
+    dist_max=100,                                  \
+    rename_chimeric_chromosomes=yes),              \
+  MinBlockLength(min_length=$(MINSIZE)),           \
+  WindowSplit(                                     \
+    preferred_size=$(MAXWSIZE),                    \
+    align=adjust,                                  \
+    keep_small_blocks=yes),                        \
+  ExternalTreeBuilding(                            \
+    input.file=blockIn.phy ,                       \
+    input.format=Phylip(                           \
+      order=sequential, type=extended),            \
+    output.file=blockIn.phy_phyml_tree.txt,        \
+    output.format=Newick,                          \
+    property_name=PhyML,                           \
+    call=./../bin/runPhyml.sh),                           \
+  OutputTrees(                                     \
+    tree=PhyML,                                    \
+    file=$(DATA).phyml_trees.dnd,                  \
+    compression=none,                              \
+    strip_names=yes)                               \
+
+

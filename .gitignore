@@ -1,4 +1,20 @@
 #dont track genomes
 *.fa
 *.hal
+
+#no pictures
+*.png
+*.pdf
+*.html
+
+#no log files
 *.log
+*.err
+*.out
+
+./DS_Store
+
+#no autodata
+*.csv
+*.tsv
+*.nw

@@ -1,0 +1,17 @@
+#  ~/.local/bin/maffilter param=MafFilter-ExportVCF.bpp
+
+DATA=syn_pop2_mappedCC9605
+
+SPECIES=(Syn_A15_44_rela,Syn_A15_62_rela,Syn_CC9605_rela,Syn_KORDI_52_rela,Syn_M16_rela,Syn_PROS_U_1_rela,Syn_RS9902_rela,Syn_RS9907_rela,Syn_TAK9802_rela,Syn_WH8109_3_rela)
+
+input.file=FilteredAlignments/$(DATA).clean.maf.gz
+input.file.compression=gzip
+input.format=Maf
+output.log=$(DATA).maffilter-exportVCF.log
+maf.filter=\
+  VcfOutput(                            \
+    file=$(DATA).snp.vcf.gz,            \
+    compression=gzip,                   \
+    reference=Syn_CC9605_rela,       \
+    genotypes=$(SPECIES),               \
+    all=no)                             
